@@ -53,3 +53,35 @@ func (c *CarObjectBuilder) GetResult() (Car, error) {
 		model:  c.model,
 	}, nil
 }
+
+type CarCommandBuilder struct {
+	result    []string
+	hasEngine bool
+	hasColor  bool
+	hasModel  bool
+}
+
+func (c *CarCommandBuilder) SetEngine(e string) CarBuilder {
+	c.result = append(c.result, "Engine: "+e)
+	c.hasEngine = true
+	return c
+}
+
+func (c *CarCommandBuilder) SetColor(e string) CarBuilder {
+	c.result = append(c.result, "Color: "+e)
+	c.hasColor = true
+	return c
+}
+
+func (c *CarCommandBuilder) SetModel(e string) CarBuilder {
+	c.result = append(c.result, "Model: "+e)
+	c.hasModel = true
+	return c
+}
+
+func (c *CarCommandBuilder) GetResult() ([]string, error) {
+	if !c.hasEngine || !c.hasColor || !c.hasModel {
+		return nil, errors.New("model, engine and color required")
+	}
+	return c.result, nil
+}
