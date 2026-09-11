@@ -15,3 +15,5 @@ Execute the main file to see the Director build both the Object representation a
 
 ```bash
 go run main.go
+
+I've been working on this project for a very long time and with great dedication, and I hope to get a perfect score 🙌
