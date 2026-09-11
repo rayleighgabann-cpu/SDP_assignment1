@@ -95,3 +95,31 @@ func (d *Director) MakeSportsCar(builder CarBuilder) {
 func (d *Director) MakeCityCar(builder CarBuilder) {
 	builder.SetModel("Golf").SetEngine("V4").SetColor("blue")
 }
+
+func main() {
+	director := &Director{}
+	object := &CarObjectBuilder{}
+
+	director.MakeSportsCar(object)
+	i, err := object.GetResult()
+	fmt.Println("1 representation")
+	//fmt.Println(i.ToString())
+	if err != nil {
+		fmt.Printf("Error: %s\n", err)
+	} else {
+		fmt.Println(i.ToString())
+	}
+
+	fmt.Println()
+
+	fmt.Println("2 representation")
+	obj := &CarCommandBuilder{}
+	director.MakeCityCar(obj)
+	res, err := obj.GetResult()
+	if err != nil {
+		fmt.Printf("Error: %s", err)
+	}
+	for _, i := range res {
+		fmt.Println(i)
+	}
+}
