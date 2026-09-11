@@ -85,3 +85,13 @@ func (c *CarCommandBuilder) GetResult() ([]string, error) {
 	}
 	return c.result, nil
 }
+
+type Director struct{}
+
+func (d *Director) MakeSportsCar(builder CarBuilder) {
+	builder.SetModel("McLaren").SetEngine("V8").SetColor("red")
+}
+
+func (d *Director) MakeCityCar(builder CarBuilder) {
+	builder.SetModel("Golf").SetEngine("V4").SetColor("blue")
+}
